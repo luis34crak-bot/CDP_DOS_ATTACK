@@ -1,0 +1,93 @@
+Laboratorio de Seguridad de Redes
+Autor
+
+Luis Hanel Nuñez Perez
+Matrícula: 2024-0784
+Materia: Seguridad de Redes
+Instructor: Jonathan Rondón
+
+Introducción
+
+Este repositorio contiene la documentación técnica de dos laboratorios realizados en un entorno virtualizado utilizando GNS3/EVE-NG. Los laboratorios tienen como finalidad comprender el funcionamiento de protocolos de red ampliamente utilizados y analizar los riesgos de seguridad asociados cuando no existen mecanismos adecuados de protección.
+
+Los ejercicios fueron ejecutados únicamente en un entorno académico controlado.
+
+Laboratorio 1: Análisis de CDP
+Objetivo del laboratorio
+
+Analizar el comportamiento del protocolo Cisco Discovery Protocol (CDP) y observar el impacto que puede generar un procesamiento excesivo de mensajes de descubrimiento sobre dispositivos Cisco.
+
+Objetivo del script
+
+Generar tráfico CDP de manera automatizada para estudiar el comportamiento de routers y switches cuando reciben una gran cantidad de anuncios CDP.
+
+Tecnologías utilizadas
+Kali Linux
+Python 3
+Scapy
+Router Cisco
+Switch Cisco IOU
+GNS3 / EVE-NG
+Requisitos
+Sistema operativo Linux
+Python 3 instalado
+Biblioteca Scapy
+Acceso al entorno de laboratorio
+Conectividad con la red de pruebas
+Funcionamiento del script
+
+El script construye tramas CDP utilizando Scapy.
+
+Durante la ejecución:
+
+Se generan identificadores de dispositivos aleatorios.
+Se construyen campos TLV de CDP.
+Se calcula el checksum correspondiente.
+Se encapsula la información utilizando Ethernet, LLC y SNAP.
+Se envían anuncios CDP de forma continua hacia la dirección multicast utilizada por este protocolo.
+Parámetros utilizados
+Parámetro	Descripción
+CDP_MULTICAST	Dirección multicast utilizada por CDP
+INTERFACE	Interfaz de red utilizada
+Device-ID	Identificador aleatorio generado
+TTL	Tiempo de vida del anuncio
+Documentación de la Red
+Topología
+
+Kali Linux → Switch Cisco → Router Cisco
+
+Direccionamiento IP
+Dispositivo	Interfaz	Dirección IP
+Router R1	e0/0	7.84.0.1
+Kali Linux	eth1	7.84.0.3
+Windows	eth1	7.84.0.5
+VLAN
+VLAN	Descripción
+VLAN 1	Red de laboratorio
+Evidencias
+Capturas requeridas
+Topología del laboratorio
+
+Insertar captura de GNS3/EVE-NG.
+
+Ejecución del script
+
+Insertar captura de la consola de Kali Linux.
+
+Verificación
+
+Insertar captura del comando:
+
+show cdp neighbors
+
+Resultados obtenidos
+
+Insertar evidencia del comportamiento observado en los dispositivos.
+
+Contramedidas
+Deshabilitar CDP cuando no sea necesario.
+Limitar protocolos de descubrimiento.
+Implementar monitoreo del plano de control.
+Mantener actualizados los dispositivos de red.
+Aplicar segmentación de red mediante VLANs.
+Utilizar controles de acceso en capa 2.
